@@ -1,0 +1,24 @@
+.Headline {
+    text-align: center;
+    font-size: 100px;
+    font-weight: 800;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+.MarketData{
+    font-size: 40px;
+    font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.LatestTrade{
+    font-size: 100px;
+    font-weight: 800;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.coinslist{
+    width: px;
+    height: 30px;
+    margin: 40%
+}

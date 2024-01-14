@@ -1,0 +1,8 @@
+/* loading-spinner.component.css */
+.Loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+  }
+  

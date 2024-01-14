@@ -1,0 +1,33 @@
+<app-loading-animation *ngIf="loading"></app-loading-animation>
+<div class="bg-white rounded-3xl border shadow-xl p-8 w-6/6 mx-20">
+    <table class="w-full table-fixed">
+      <thead>
+        <tr>
+          <th class="w-1/6 border p-2 text-left">Coin</th>
+          <th class="w-1/6 border p-2 text-left">Latest Price</th>
+          <th class="w-1/6 border p-2 text-left">24h%</th>
+          <th class="w-1/6 border p-2 text-left">1h%</th>
+          <th class="w-1/6 border p-2 text-left">7d%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Coin of CoinsTable">
+            <td class="w-1/6 border p-2 font-semibold text-gray-700">{{ Coin.symbol }}</td>
+            <td class="w-1/6 border p-2 font-semibold text-gray-700"
+              [ngClass]="{ 'text-red-500': Coin.lastPrice < 0, 'text-green-500': Coin.lastPrice >= 0 }">${{ Coin.lastPrice }}</td>
+            <td class="w-1/6 border p-2 font-bold"
+              [ngClass]="{ 'text-red-500': Coin.priceChangePercent < 0, 'text-green-500': Coin.priceChangePercent >= 0 }">
+              {{Coin.priceChangePercent > 0? "+" : "-"}} {{ Coin.priceChangePercent }}%
+            </td>
+            <td class="w-1/6 border p-2 font-bold"
+              [ngClass]="{ 'text-red-500': Coin.priceChange.hourlyChange < 0, 'text-green-500': Coin.priceChange.hourlyChange >= 0 }">
+              {{Coin.priceChange.hourlyChange > 0? "+" : ""}} {{ Coin.priceChange.hourlyChange }}%
+            </td>
+            <td class="w-1/6 border p-2 font-bold"
+              [ngClass]="{ 'text-red-500': Coin.priceChange.weeklyChange < 0, 'text-green-500': Coin.priceChange.weeklyChange >= 0 }">
+              {{Coin.priceChange.weeklyChange > 0? "+" : "-"}} {{ Coin.priceChange.weeklyChange }}%
+            </td>
+          </tr>
+        </tbody>
+      </table>        
+  </div>
