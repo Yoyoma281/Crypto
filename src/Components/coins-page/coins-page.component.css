@@ -36,15 +36,23 @@
 /* Responsive styles for smaller screens */
 @media (max-width: 1300px) {
   .custom-table .hide-on-small-screen-1 {
-    display: none; /* Hide specific cells on smaller screens */
+    display: none;
+    /* Hide specific cells on smaller screens */
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   .custom-table .hide-on-small-screen-2 {
-    display: none; /* Hide specific cells on smaller screens */
+    display: none;
+  }
+
+  /* Adjust font size and padding for all cells on smaller screens */
+  .custom-table th,
+  .custom-table td {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    
   }
 }
-
-
-
