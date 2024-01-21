@@ -24,7 +24,7 @@ export class CoinsPageComponent {
     });
   }
   PopulateCoinsTable() {
-    this.Api.getTopCoins(10).subscribe((data) => {
+    this.Api.getTopCoins(5).subscribe((data) => {
       if (
         Array.isArray(data) &&
         data.every(
