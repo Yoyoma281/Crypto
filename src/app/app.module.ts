@@ -8,10 +8,9 @@ import { CoinInfoComponent } from '../Components/coin-info/coin-info.component';
 import { LoadingAnimationComponent } from '../Components/loading-animation/loading-animation.component';
 import { CoinsPageComponent } from '../Components/coins-page/coins-page.component';
 import { ContactPageComponent } from '../Components/contact-page/contact-page.component';
-import { DarkModeToggleComponent } from '../Components/dark-mode-toggle/dark-mode-toggle.component';
 
 @NgModule({
-  declarations: [AppComponent, CoinListComponent, CoinInfoComponent, LoadingAnimationComponent, CoinsPageComponent, ContactPageComponent, DarkModeToggleComponent],
+  declarations: [AppComponent, CoinListComponent, CoinInfoComponent, LoadingAnimationComponent, CoinsPageComponent, ContactPageComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
