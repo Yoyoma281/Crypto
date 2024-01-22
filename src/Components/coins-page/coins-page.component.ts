@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, Renderer2, ElementRef, HostListener } from '@angular/core';
 import { Coin } from '../../models/Coin';
 import { BinanceTrade } from '../../models/TradeData';
 import { BinanceApiService } from '../../services/API/binance-api.service';
@@ -8,12 +8,13 @@ import { BinanceApiService } from '../../services/API/binance-api.service';
   templateUrl: './coins-page.component.html',
   styleUrl: './coins-page.component.css'
 })
-export class CoinsPageComponent {
-  constructor(private Api: BinanceApiService) {}
+export class CoinsPageComponent implements OnInit {
+  constructor(private renderer: Renderer2, private el: ElementRef, private Api: BinanceApiService) {}
   title = 'CryptoAPI';
   MarketData: any;
   CoinsTable: Coin[] = [];
-  loading: boolean = true; // Initial loading state
+  loading: boolean = true; 
+  showTable = false;
 
   ngOnInit(): void {
     this.PopulateCoinsTable();
@@ -61,5 +62,18 @@ export class CoinsPageComponent {
         coin.priceChange.hourlyChange = Number(data);
       });
     });
+  }
+  @HostListener('window:scroll', ['$event'])
+  checkScroll() {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const triggerPoint = 250; // Adjust this value based on when you want the table to appear
+
+    if (scrollPosition > triggerPoint) {
+      // Add a class to the table to transition its opacity
+      this.renderer.addClass(this.el.nativeElement.querySelector('.custom-table'), 'visible');
+    } else {
+      // Remove the class when scrolling up
+      this.renderer.removeClass(this.el.nativeElement.querySelector('.custom-table'), 'visible');
+    }
   }
 }
