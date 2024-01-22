@@ -108,9 +108,9 @@ export class BinanceApiService {
       })
     );
   }
-  getTopCoins(numberOfCoins: number) {
+  getTopCoins(numberOfCoins: number): Observable<any[]> {
     // Use interval to emit a value every 3 seconds and switchMap to make the HTTP request
-    return interval(6000).pipe(
+    return interval(2000).pipe(
       switchMap(() => {
         const url = `${this.baseUrl}/ticker/24hr`;
   
@@ -118,19 +118,29 @@ export class BinanceApiService {
           map((data) => {
             // Filter coins traded in USDT
             const usdtCoins = data.filter((coin) => coin.symbol.includes('USDT'));
-  
-            // Sort USDT coins based on 24-hour percentage change in descending order
+            console.table(usdtCoins)
+            // Sort USDT coins based on market cap in descending order
             const sortedUsdtCoins = usdtCoins.sort(
-              (a, b) => b.priceChangePercent - a.priceChangePercent
+              (a, b) => b.marketCap - a.marketCap
             );
   
-            // Get the top N USDT coins
-            return sortedUsdtCoins.slice(0, numberOfCoins);
+            // Truncate prices by keeping only the first two decimal places
+            const truncatedCoins = sortedUsdtCoins.map((coin) => {
+              const lastPrice = parseFloat(coin.lastPrice);
+              return {
+                ...coin,
+                lastPrice: isNaN(lastPrice) ? coin.lastPrice : lastPrice.toFixed(2)
+              };
+            });
+  
+            return truncatedCoins.slice(0, numberOfCoins);
           })
         );
       })
     );
   }
+  
+  
   getPriceChange(symbol: string, interval: string): Observable<string> {
     console.log(interval);
     let url = `${this.baseUrl}/klines`;

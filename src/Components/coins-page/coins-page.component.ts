@@ -53,7 +53,6 @@ export class CoinsPageComponent {
       const hourlyChange$ = this.Api.getPriceChange(coin.symbol, '1h');
   
       weeklyChange$.subscribe((data) => {
-        console.log('Weekly Change for', coin.symbol, data);
         coin.priceChange.weeklyChange = Number(data);
       });
   

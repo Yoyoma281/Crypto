@@ -1,29 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora&family=Ubuntu:wght@500&display=swap');
+
 .custom-container {
-  width: 40%;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   position: relative;
+  display: flex;
+  flex-direction: column; /* Adjust to column layout */
+  align-items: center;
   border-radius: 1.5rem;
-  border: 5px solid #5d5ddf;
-  box-shadow: 0 2px 4px rgba(1, 1, 0, 0.1);
   padding: 0.5rem;
   z-index: 1;
 }
 
-.custom-table {
+.introduction {
+  position: relative;
   width: 100%;
+  background-color: red;
+  text-align: center; /* Center text */
+  padding: 1rem; /* Adjust padding as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-table {
+  margin-top: 10%;
   overflow: auto;
-  height: calc(100vh - 6rem);
   table-layout: fixed;
   border-collapse: separate;
-  border-spacing: 0.2rem;
+  border-spacing: 1.5rem;
+  font-family: 'Ubuntu', sans-serif;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 500px; /* Set a minimum width for the table */
 }
 
 .custom-table th,
 .custom-table td {
-  border: 1px solid #ccc;
   padding: 0.2rem;
   border-radius: 0.8rem;
+  white-space: nowrap;
+  border-bottom: 1px solid #ddd;
+}
+
+.custom-table tr:last-child td,
+.custom-table tr:last-child th {
+  border-bottom: none;
 }
 
 .price-cell.negative,
@@ -31,6 +53,14 @@
 .price-cell.positive,
 .change-cell.positive {
   font-size: 0.8rem;
+}
+
+.negative {
+  color: red;
+}
+
+.positive {
+  color: green;
 }
 
 @media (max-width: 1300px) {
@@ -45,6 +75,7 @@
   }
 
   .custom-table {
+    min-width: 500px; /* Set a minimum width for the table */
     width: 95%;
     overflow-x: auto;
     white-space: nowrap;
@@ -53,5 +84,11 @@
   .custom-table th,
   .custom-table td {
     font-size: 2vw;
+    min-width: 60px;
+  }
+
+  .introduction {
+    position: static; /* Remove fixed position on smaller screens */
+     /* Take full width on smaller screens */
   }
 }
