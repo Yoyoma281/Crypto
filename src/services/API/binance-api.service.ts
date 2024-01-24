@@ -118,7 +118,6 @@ export class BinanceApiService {
           map((data) => {
             // Filter coins traded in USDT
             const usdtCoins = data.filter((coin) => coin.symbol.includes('USDT'));
-            console.table(usdtCoins)
             // Sort USDT coins based on market cap in descending order
             const sortedUsdtCoins = usdtCoins.sort(
               (a, b) => b.marketCap - a.marketCap
