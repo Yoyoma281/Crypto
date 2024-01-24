@@ -3,7 +3,6 @@
 .custom-container {
   width: 100%;
   height: 100vh;
-  gap: 10px;
   margin: 0 auto;
   position: relative;
   display: flex;
@@ -16,23 +15,25 @@
   background: linear-gradient(to right, #06204c, #223855, #55123a);
   display: flex;
   justify-content: center;
+  height: 100%;
   width: 100%;
   text-align: left;
   padding: 5rem;
   font-family: 'Ubuntu', sora;
   font-size: 7rem;
   font-weight: 550;
+  margin-bottom: 1rem;
   opacity: 1;
   color: white;
 }
 
 .custom-table {
-  margin-top: 5%;
+  margin-top: 1rem;
+  width: 6rem;
   overflow: auto;
   table-layout: fixed;
   border-collapse: separate;
   border-spacing: 2rem;
-  margin: 20px;
   font-family: 'Ubuntu', sora;
   background-color: white;
   border-radius: 10px;
@@ -40,7 +41,6 @@
   min-width: 500px;
   opacity: 1;
   z-index: 1;
-  box-shadow: ;
 }
 
 .custom-table th,
