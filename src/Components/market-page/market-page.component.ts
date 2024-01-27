@@ -6,12 +6,11 @@ import { fadeInOut, fadeOnScroll } from '../../app/Shared/animations';
 import { HtmlParser } from '@angular/compiler';
 
 @Component({
-  selector: 'app-coins-page',
-  templateUrl: './coins-page.component.html',
-  styleUrl: './coins-page.component.css',
-  animations: [fadeInOut],
+  selector: 'app-market-page',
+  templateUrl: './market-page.component.html',
+  styleUrl: './market-page.component.css'
 })
-export class CoinsPageComponent implements OnInit {
+export class MarketPageComponent {
   constructor(private renderer: Renderer2, private el: ElementRef, private Api: BinanceApiService) {}
   title = 'CryptoAPI';
   MarketData: any;

@@ -1,0 +1,65 @@
+.custom-table {
+    width: 30%;
+    top: 48.5rem;
+    position: absolute;
+    border-collapse: separate;
+    border-spacing: 2vw;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 500px;
+    max-width: 700px;
+    opacity: 1;
+    z-index: 1;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    padding: 0.2rem;
+    border-radius: 0.8rem;
+    white-space: nowrap;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .custom-table tr:last-child td,
+  .custom-table tr:last-child th {
+    border-bottom: none;
+  }
+  
+  .price-cell.negative,
+  .change-cell.negative,
+  .price-cell.positive,
+  .change-cell.positive {
+    font-size: 0.8rem;
+  }
+  
+  .negative {
+    color: red;
+  }
+  
+  .positive {
+    color: green;
+  }
+
+  @media (max-width: 1300px) {
+    .custom-table .hide-on-small-screen-1 {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .custom-table .hide-on-small-screen-2 {
+      display: none;
+    }
+  
+    .custom-table {
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    .custom-table th,
+    .custom-table td {
+      font-size: 2vw;
+      min-width: 60px;
+    }
+  }
