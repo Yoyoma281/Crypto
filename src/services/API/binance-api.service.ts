@@ -110,7 +110,7 @@ export class BinanceApiService {
   }
   getTopCoins(numberOfCoins: number): Observable<any[]> {
     // Use interval to emit a value every 3 seconds and switchMap to make the HTTP request
-    return interval(2000).pipe(
+    return interval(12000).pipe(
       switchMap(() => {
         const url = `${this.baseUrl}/ticker/24hr`;
   
@@ -138,8 +138,6 @@ export class BinanceApiService {
       })
     );
   }
-  
-  
   getPriceChange(symbol: string, interval: string): Observable<string> {
     console.log(interval);
     let url = `${this.baseUrl}/klines`;

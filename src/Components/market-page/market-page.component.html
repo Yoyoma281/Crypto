@@ -1,11 +1,17 @@
-<table class="custom-table">
+<div class="Container">
+  <div class="Headline">
+    <h1>Unlocking Financial Freedom</h1>
+    <h2>Explore the Latest Trends and Opportunities in the Crypto Market</h2>
+  </div>
+  <img src="./assets/HomePageImage2.png" alt="">
+  <table class="custom-table">
     <thead>
       <tr>
         <th class="">Coin</th>
         <th class="">Latest Price</th>
         <th class="hide-on-small-screen-1">24h%</th>
-        <!-- <th class="hide-on-small-screen-1">1h%</th> -->
-        <!-- <th class="hide-on-small-screen-1">7d%</th> -->
+        <th class="hide-on-small-screen-1">1h%</th>
+        <th class="hide-on-small-screen-1">7d%</th>
       </tr>
     </thead>
     <tbody>
@@ -18,12 +24,18 @@
           [ngClass]="{ 'negative': Coin.priceChangePercent < 0, 'positive': Coin.priceChangePercent >= 0 }">
           {{ Coin.priceChangePercent > 0 ? "+" : "" }} {{ Coin.priceChangePercent }}%
         </td>
-        <!-- <td class="change-cell hide-on-small-screen-1" [ngClass]="{ 'negative': Coin.priceChange.hourlyChange < 0, 'positive': Coin.priceChange.hourlyChange >= 0 }">
+        <td class="change-cell hide-on-small-screen-1"
+          [ngClass]="{ 'negative': Coin.priceChange.hourlyChange < 0, 'positive': Coin.priceChange.hourlyChange >= 0 }">
           {{ Coin.priceChange.hourlyChange > 0 ? "+" : "" }} {{ Coin.priceChange.hourlyChange }}%
-        </td> -->
-        <!-- <td class=" change-cell hide-on-small-screen-1" [ngClass]="{ 'negative': Coin.priceChange.weeklyChange < 0, 'positive': Coin.priceChange.weeklyChange >= 0 }">
+        </td>
+        <td class=" change-cell hide-on-small-screen-1"
+          [ngClass]="{ 'negative': Coin.priceChange.weeklyChange < 0, 'positive': Coin.priceChange.weeklyChange >= 0 }">
           {{ Coin.priceChange.weeklyChange > 0 ? "+" : "" }} {{ Coin.priceChange.weeklyChange }}%
-        </td> -->
+        </td>
       </tr>
     </tbody>
   </table>
+  
+  
+  
+</div>

@@ -12,5 +12,8 @@ import { HtmlParser } from '@angular/compiler';
   animations: [fadeInOut],
 })
 export class HomePageComponent {
+  ApiSend(){
+    
+  }
   
 }

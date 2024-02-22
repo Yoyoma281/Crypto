@@ -9,10 +9,11 @@ import { HomePageComponent } from '../Components/home-page/home-page.component';
 import { ContactPageComponent } from '../Components/contact-page/contact-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MarketPageComponent } from '../Components/market-page/market-page.component';
+import { AboutPageComponent } from '../Components/about-page/about-page.component';
 
 
 @NgModule({
-  declarations: [AppComponent, CoinListComponent, CoinInfoComponent, HomePageComponent, ContactPageComponent, MarketPageComponent],
+  declarations: [AppComponent, CoinListComponent, CoinInfoComponent, HomePageComponent, ContactPageComponent, MarketPageComponent, AboutPageComponent],
   imports: [BrowserAnimationsModule, BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

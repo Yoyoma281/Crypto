@@ -50,7 +50,7 @@
 
 }
 
-.navbar button{
+.navbar button {
   color: white;
   border-width: 1px;
   border-color: transparent;
@@ -59,21 +59,26 @@
   transition: border-color 0.3s ease;
 }
 
-.navbar button:hover{
+.navbar button:hover {
   border-color: white;
 }
 
-footer{
+footer {
   padding: 80px 50px 40px;
   position: relative;
-  height: 700px;
+  height: 30rem;
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  gap: 25rem;
 }
 
+footer ul{
+  margin-left: 4p;
+}
 
-
-
-
+footer .social-links a{
+  padding: 2%;
+  
+}
