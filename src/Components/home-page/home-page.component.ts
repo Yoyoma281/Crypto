@@ -1,4 +1,12 @@
-import { Component, OnChanges, OnInit, SimpleChanges, Renderer2, ElementRef, HostListener } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  Renderer2,
+  ElementRef,
+  HostListener,
+} from '@angular/core';
 import { Coin } from '../../models/Coin';
 import { BinanceTrade } from '../../models/TradeData';
 import { BinanceApiService } from '../../services/API/binance-api.service';
@@ -11,9 +19,18 @@ import { HtmlParser } from '@angular/compiler';
   styleUrl: './home-page.component.css',
   animations: [fadeInOut],
 })
-export class HomePageComponent {
-  ApiSend(){
-    
+export class HomePageComponent implements OnInit {
+  constructor(private Api: BinanceApiService) {}
+
+  Coins: any[] = [];
+  ngOnInit(): void {
+    this.PopulateCoinsWindows();
   }
-  
+
+  PopulateCoinsWindows() {
+    this.Api.getTopCoins(2).subscribe((data) => {
+      this.Coins = data;
+      console.log(this.Coins);
+    });
+  }
 }

@@ -1,4 +1,12 @@
-import { Component, OnChanges, OnInit, SimpleChanges, Renderer2, ElementRef, HostListener } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  Renderer2,
+  ElementRef,
+  HostListener,
+} from '@angular/core';
 import { Coin } from '../../models/Coin';
 import { BinanceTrade } from '../../models/TradeData';
 import { BinanceApiService } from '../../services/API/binance-api.service';
@@ -8,25 +16,27 @@ import { HtmlParser } from '@angular/compiler';
 @Component({
   selector: 'app-market-page',
   templateUrl: './market-page.component.html',
-  styleUrl: './market-page.component.css'
+  styleUrl: './market-page.component.css',
 })
 export class MarketPageComponent {
-  constructor(private renderer: Renderer2, private el: ElementRef, private Api: BinanceApiService) {}
+  constructor(
+    private renderer: Renderer2,
+    private el: ElementRef,
+    private Api: BinanceApiService
+  ) {}
   title = 'CryptoAPI';
   MarketData: any;
   CoinsTable: Coin[] = [];
-  loading: boolean = true; 
+  loading: boolean = true;
   showTable = false;
-  divElement: HTMLElement | undefined;
 
   ngOnInit(): void {
     this.PopulateCoinsTable();
-
   }
   Apiservice(coins: string[]) {
-    this.Api.StartTradeSocket(coins).subscribe((data) => {
-      this.CoinsTable = data as Coin [];
-    });
+    // this.Api.StartTradeSocket(coins).subscribe((data) => {
+    //   this.CoinsTable = data as Coin [];
+    // });
   }
   PopulateCoinsTable() {
     this.Api.getTopCoins(5).subscribe((data) => {
@@ -38,33 +48,20 @@ export class MarketPageComponent {
             'symbol' in item &&
             'priceChangePercent' in item
         )
-      ) {
-        this.CoinsTable = data.map((coin) => ({
-          ...coin,
-          priceChange: { hourlyChange: 0, weeklyChange: 0 },
-        }));
-        this.UpdatePriceChangeProperties();
-        this.loading = false;
-      } else {
+      ) 
+      {
+
+        
+
+
+
+
+      } 
+      else {
         console.error('Invalid data structure');
         this.loading = false; // Handle error, set loading to false
       }
       console.log(this.CoinsTable[0]);
-    });
-  }
-  UpdatePriceChangeProperties() {
-    this.CoinsTable.forEach((coin) => {
-      const weeklyChange$ = this.Api.getPriceChange(coin.symbol, '1w');
-      const hourlyChange$ = this.Api.getPriceChange(coin.symbol, '1h');
-  
-      weeklyChange$.subscribe((data) => {
-        coin.priceChange.weeklyChange = Number(data);
-      });
-  
-      hourlyChange$.subscribe((data) => {
-        console.log('Hourly Change for', coin.symbol, data);
-        coin.priceChange.hourlyChange = Number(data);
-      });
     });
   }
 }

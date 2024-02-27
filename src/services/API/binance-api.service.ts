@@ -1,6 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Observer, map, catchError, throttleTime, merge, EMPTY, interval, switchMap } from 'rxjs';
+import {
+  Observable,
+  Observer,
+  map,
+  catchError,
+  throttleTime,
+  merge,
+  EMPTY,
+  interval,
+  switchMap,
+} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -110,75 +120,48 @@ export class BinanceApiService {
   }
   getTopCoins(numberOfCoins: number): Observable<any[]> {
     // Use interval to emit a value every 3 seconds and switchMap to make the HTTP request
-    return interval(12000).pipe(
+    return interval(1000).pipe(
       switchMap(() => {
         const url = `${this.baseUrl}/ticker/24hr`;
-  
+
         return this.http.get<any[]>(url).pipe(
           map((data) => {
             // Filter coins traded in USDT
-            const usdtCoins = data.filter((coin) => coin.symbol.includes('USDT'));
+            const usdtCoins = data.filter((coin) =>
+              coin.symbol.includes('USDT')
+            );
             // Sort USDT coins based on market cap in descending order
             const sortedUsdtCoins = usdtCoins.sort(
               (a, b) => b.marketCap - a.marketCap
             );
-  
+
             // Truncate prices by keeping only the first two decimal places
             const truncatedCoins = sortedUsdtCoins.map((coin) => {
               const lastPrice = parseFloat(coin.lastPrice);
               return {
                 ...coin,
-                lastPrice: isNaN(lastPrice) ? coin.lastPrice : lastPrice.toFixed(2)
+                lastPrice: isNaN(lastPrice)
+                  ? coin.lastPrice
+                  : lastPrice.toFixed(2),
               };
             });
-  
+
             return truncatedCoins.slice(0, numberOfCoins);
           })
         );
       })
     );
   }
-  getPriceChange(symbol: string, interval: string): Observable<string> {
-    console.log(interval);
-    let url = `${this.baseUrl}/klines`;
-
-    // Switch based on the interval
-    switch (interval) {
-      case '1h':
-        url = `${this.baseUrl}/klines`;
-        break;
-      case '1w':
-        url = `${this.baseUrl}/klines`; // Add assignment operator here
-        break;
-      default:
-        throw new Error('Invalid endpoint type');
-    }
-
-    // Query parameters
+  getKlinesData(symbol: string, interval: string): Observable<any[]> {
     const params = {
       symbol: symbol,
       interval: interval,
-      limit: '2', // Get the latest two candlesticks to calculate the change
     };
 
-    return this.http.get<any[]>(url, { params }).pipe(
-      map((data) => {
-        // Extract closing prices from the candlestick data
-        const closingPrices = data.map((item) => parseFloat(item[4]));
-
-        // Ensure that there are two closing prices
-        if (closingPrices.length === 2) {
-          // Calculate price change
-          const priceChange = closingPrices[1] - closingPrices[0];
-
-          // Format the result to have up to 2 decimal places
-          const formattedPriceChange = priceChange.toFixed(2);
-
-          return formattedPriceChange;
-        } else {
-          throw new Error('Not enough data points to calculate price change');
-        }
-      })
-    );
+    return this.http.get<any[]>(`${this.baseUrl}klines`, { params });
+  }
+  getPrice(coin: string) {
+    const url = `${this.baseUrl}/ticker?symbol=BTCUSDT`;
+    return this.http.get<any>(url);
   }
 }

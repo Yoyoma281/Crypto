@@ -1,6 +1,6 @@
 export interface Coin {
     symbol: string
-    priceChange: PriceChange
+    priceChange: number
     priceChangePercent: number
     weightedAvgPrice: number
     prevClosePrice: number
@@ -22,8 +22,4 @@ export interface Coin {
     count: number
   }
   
-  export interface PriceChange {
-    hourlyChange: number
-    weeklyChange: number
-  }
   

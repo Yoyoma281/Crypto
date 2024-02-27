@@ -1,38 +1,9 @@
-<div class="bg-white rounded-3xl border shadow-xl p-8 w-6/6 mx-20 flex items-center">
-    <button class="inline-flex items-center justify-center w-14 h-14 text-blue-100 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full"></button>
-
-    <div class="w-16 ml-5">
-        <div class="font-semibold text-sm text-gray-700">{{ Coin.symbol }}</div>
-    </div>
-
-    <div class="w-25 ml-20">
-        <div class="font-semibold text-xl text-gray-700" [ngClass]="{ 'text-red-500': Coin.lastPrice < 0, 'text-green-500': Coin.lastPrice >= 0 }">${{ Coin.lastPrice }}</div>
-    </div>
-
-    <div class=" ml-36">
-        <div class="font-bold" [ngClass]="{ 'text-red-500': Coin.priceChangePercent < 0, 'text-green-500': Coin.priceChangePercent >= 0 }">
-            {{Coin.priceChangePercent > 0? "+" : "-"}} {{ Coin.priceChangePercent }}%
-            <div class="font-medium text-xs text-gray-700 flex justify-end mt-2" [ngClass]="{ 'text-red-500': Coin.priceChange < 0, 'text-green-500': Coin.priceChange >= 0 }">
-                {{ Coin.priceChange }} <br> {{ Coin.symbol }}
-            </div>
-        </div>
-    </div>
-
-    <div class="ml-36">
-        <div class="font-bold" [ngClass]="{ 'text-red-500': OneHourChange < 0, 'text-green-500': OneHourChange >= 0 }">
-             {{OneHourChange > 0? "+" : ""}} {{  OneHourChange }}%
-            <div class="font-medium text-xs text-gray-700 flex justify-end mt-2" [ngClass]="{ 'text-red-500': OneHourChange < 0, 'text-green-500': OneHourChange >= 0 }">
-                {{ OneHourChange }} <br> {{ Coin.symbol }}
-            </div>
-        </div>
-    </div>
-
-    <div class=" ml-36">
-        <div class="font-bold" [ngClass]="{ 'text-red-500': OneWeekChange < 0, 'text-green-500': OneWeekChange >= 0 }">
-            {{OneWeekChange > 0? "+" : "-"}} {{ OneWeekChange }}%
-            <div class="font-medium text-xs text-gray-700 flex justify-end mt-2" [ngClass]="{ 'text-red-500': OneWeekChange < 0, 'text-green-500': OneWeekChange >= 0 }">
-                {{ OneWeekChange }} <br> {{ Coin.symbol }}
-            </div>
-        </div>
-    </div>
+<div class="container">
+    <button>info</button>
+    <h1>{{Coin.symbol}}</h1>
+    <ul>
+        <li>{{OneHourChange}}</li>
+        <li>{{OneWeekChange}}</li>
+        <li></li>
+    </ul>
 </div>

@@ -3,15 +3,16 @@
 <div class="custom-container">
   <div class="Headline" [@fadeInOut]>
     <br>Best place to keep <br>track of the crypto market
-    <div class="headline-buttons">
-      <button>button1</button>
-      <button (click)="ApiSend()">button2</button>
-    </div>
 
   </div>
   <main>
     <section>
       <div class="description">
+        <div class="coins">
+          <app-coin-info [Coin]="Coins[0]"></app-coin-info>
+          <app-coin-info [Coin]="Coins[1]"></app-coin-info>
+        </div>
+
         <div class="window">
           <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
             <path

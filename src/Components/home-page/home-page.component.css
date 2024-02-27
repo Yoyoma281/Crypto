@@ -14,17 +14,17 @@
 .Headline {
   background: linear-gradient(to right, #06204c, #223855, #55123a);
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-left: 2rem;
+  padding-top: 2rem;
   width: 100%;
-  height: 50%;
+  height: 50rem;
   text-align: left;
-  padding: 5% 10%;
-  font-size: 4.5rem;
+  font-size: 6rem;
   font-weight: 550;
   opacity: 1;
   color: white;
   overflow: auto;
+  position: relative;
 }
 
 .headline-buttons {
@@ -47,7 +47,15 @@
   font-size: 2rem;
 }
 
-
+.coins{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  position: absolute;
+  top: 47rem;
+}
 
 .description {
   background-color: #212529;
