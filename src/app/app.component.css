@@ -59,9 +59,32 @@
   transition: border-color 0.3s ease;
 }
 
-.navbar button:hover {
-  border-color: white;
+.menu-window {
+  display: flex;
+  background-color: white;
+  border: 0px solid;
+  border-radius: 10px;
+  position: absolute;
+  height: 20rem;
+  width: 30rem;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.2s ease-out;
 }
+
+.menu-window ul li a {
+  color: black;
+}
+
+.LearnButton:hover .menu-window {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
 
 footer {
   padding: 80px 50px 40px;
@@ -74,11 +97,11 @@ footer {
   gap: 25rem;
 }
 
-footer ul{
+footer ul {
   margin-left: 4p;
 }
 
-footer .social-links a{
+footer .social-links a {
   padding: 2%;
-  
+
 }

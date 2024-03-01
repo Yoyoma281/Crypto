@@ -9,8 +9,7 @@
     <section>
       <div class="description">
         <div class="coins">
-          <app-coin-info [Coin]="Coins[0]"></app-coin-info>
-          <app-coin-info [Coin]="Coins[1]"></app-coin-info>
+          <app-coin-info *ngFor="let coin of Coins" [Coin]="coin"></app-coin-info>
         </div>
 
         <div class="window">

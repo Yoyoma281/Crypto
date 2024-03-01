@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { Coin } from '../../models/Coin';
 import { BinanceTrade } from '../../models/TradeData';
-import { BinanceApiService } from '../../services/API/binance-api.service';
+import { BinanceApiService } from '../../services/BinanceApi/binance-api.service';
 import { fadeInOut, fadeOnScroll } from '../../app/Shared/animations';
 import { HtmlParser } from '@angular/compiler';
 
@@ -24,6 +24,7 @@ export class MarketPageComponent {
     private el: ElementRef,
     private Api: BinanceApiService
   ) {}
+  
   title = 'CryptoAPI';
   MarketData: any;
   CoinsTable: Coin[] = [];
@@ -40,28 +41,11 @@ export class MarketPageComponent {
   }
   PopulateCoinsTable() {
     this.Api.getTopCoins(5).subscribe((data) => {
-      if (
-        Array.isArray(data) &&
-        data.every(
-          (item) =>
-            typeof item === 'object' &&
-            'symbol' in item &&
-            'priceChangePercent' in item
-        )
-      ) 
-      {
-
-        
-
-
-
-
-      } 
-      else {
-        console.error('Invalid data structure');
-        this.loading = false; // Handle error, set loading to false
+      if (Array.isArray(data) && data.length > 0) {
+        this.CoinsTable = data;
+      } else {
+        console.error('Invalid data structure or empty array');
       }
-      console.log(this.CoinsTable[0]);
     });
   }
 }

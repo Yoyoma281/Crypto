@@ -23,28 +23,8 @@
   font-weight: 550;
   opacity: 1;
   color: white;
-  overflow: auto;
   position: relative;
-}
-
-.headline-buttons {
-  width: 100%;
-  display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 20rem;
-
-}
-
-.headline-buttons>button {
-  background-color: rgb(248, 161, 0);
-  text-align: center;
-  border-radius: 100px;
-  width: 16rem;
-  height: 4rem;
-  margin: 4rem;
-  font-weight: 400;
-  font-size: 2rem;
 }
 
 .coins{
@@ -56,6 +36,7 @@
   position: absolute;
   top: 47rem;
 }
+
 
 .description {
   background-color: #212529;

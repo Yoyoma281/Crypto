@@ -23,7 +23,6 @@ export class BinanceApiService {
 
   constructor(private http: HttpClient) {}
 
-  //Creates the connection needed for future actions to be done.
   StartTradeSocket(coins: string[]): Observable<any> {
     coins = coins.map((coin) => coin.toLowerCase());
     const coinStreams: Record<string, Observable<any>> = {};
@@ -107,7 +106,8 @@ export class BinanceApiService {
       })
     );
   }
-  getCoinPrice(coin: string = 'BTCUSDT'): Observable<number> {
+  //Retrieves all data about the coin
+  GetCoin(coin: string = 'BTCUSDT'): Observable<number> {
     const apiUrl = `${this.baseUrl}?symbol=${coin}`;
 
     return this.http.get<any>(apiUrl).pipe(
@@ -118,9 +118,9 @@ export class BinanceApiService {
       })
     );
   }
+  //Starts a stream of the top 'NumberCfCoins' from the binance market
   getTopCoins(numberOfCoins: number): Observable<any[]> {
-    // Use interval to emit a value every 3 seconds and switchMap to make the HTTP request
-    return interval(1000).pipe(
+    return interval(3000).pipe(
       switchMap(() => {
         const url = `${this.baseUrl}/ticker/24hr`;
 
@@ -134,7 +134,6 @@ export class BinanceApiService {
             const sortedUsdtCoins = usdtCoins.sort(
               (a, b) => b.marketCap - a.marketCap
             );
-
             // Truncate prices by keeping only the first two decimal places
             const truncatedCoins = sortedUsdtCoins.map((coin) => {
               const lastPrice = parseFloat(coin.lastPrice);

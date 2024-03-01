@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Input, EventEmitter } from '@angular/core';
-import { BinanceApiService } from '../../services/API/binance-api.service';
+import { BinanceApiService } from '../../services/BinanceApi/binance-api.service';
 
 @Component({
   selector: 'app-coin-list',

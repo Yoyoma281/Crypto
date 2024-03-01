@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { BinanceApiService } from '../../services/API/binance-api.service';
+import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { BinanceApiService } from '../../services/BinanceApi/binance-api.service';
 import { BinanceTrade } from '../../models/TradeData';
 import { Coin } from '../../models/Coin';
 
@@ -20,9 +20,10 @@ export class CoinInfoComponent implements OnInit {
     }
   
     PriceChange() {
-      console.log(this.Coin)
+      console.log("Coininfo: ", this.Coin)
       if (this.Coin) {
         const { symbol } = this.Coin;
+        console.log("IN")
   
         this.Api.getKlinesData(symbol, '1w').subscribe((data) => {
           if (data.length > 0) {

@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BinanceTrade } from '../models/TradeData';
 import { Coin } from '../models/Coin';
-import { BinanceApiService } from '../services/API/binance-api.service';
+import { BinanceApiService } from '../services/BinanceApi/binance-api.service';
 
 @Component({
   selector: 'app-root',
