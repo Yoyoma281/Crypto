@@ -6,15 +6,19 @@ import { NewsApiService } from '../../services/NewsApi/news-api.service';
   styleUrl: './news-page.component.css',
 })
 export class NewsPageComponent implements OnInit{
-  constructor(private News: NewsApiService) {}
 
+  news:any
+
+  constructor(private News: NewsApiService) {}
+  
   ngOnInit(): void {
     this.GetNews();
   }
 
   GetNews() {
     this.News.getNews().subscribe((data) =>{
-      console.log("news: ", data)
+      console.log("news recieved", data)
+      this.news = data.articles;
     })
   }
 }
