@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Article } from '../../models/Articles';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,13 @@ export class NewsApiService {
   constructor(private http: HttpClient) { }
 
   getNews(): Observable<any> {
-    const fromDate = '2024-02-01';
+    const fromDate = '2024-02-03';
     const sortBy = 'publishedAt';
     const query = 'Crypto';
 
     const url = `${this.apiUrl}?q=${query}&from=${fromDate}&sortBy=${sortBy}&apiKey=${this.apiKey}`;
 
-    return this.http.get<any>(url);
+    return this.http.get<Article>(url);
   }
 }
 

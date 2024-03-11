@@ -1,24 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsApiService } from '../../services/NewsApi/news-api.service';
+import { Article } from '../../models/Articles';
+
 @Component({
   selector: 'app-news-page',
   templateUrl: './news-page.component.html',
   styleUrl: './news-page.component.css',
 })
-export class NewsPageComponent implements OnInit{
+export class NewsPageComponent implements OnInit {
+  private articles: Article[] = []
+  TopArticles: Article[] = []
 
-  news:any
+  constructor(private News: NewsApiService) { }
 
-  constructor(private News: NewsApiService) {}
-  
   ngOnInit(): void {
     this.GetNews();
   }
 
   GetNews() {
-    this.News.getNews().subscribe((data) =>{
-      console.log("news recieved", data)
-      this.news = data.articles;
+    this.News.getNews().subscribe((data) => {
+      this.articles = data.articles
+      console.log("news comp: ", this.articles)
+      this.TopArticles = this.articles.slice(0, 3)
     })
   }
 }
