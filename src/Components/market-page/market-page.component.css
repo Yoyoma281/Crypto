@@ -1,4 +1,4 @@
-.Container{
+.Container {
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
@@ -11,86 +11,101 @@
   gap: 4.5rem;
 }
 
-.Headline{
+.Headline {
   width: 100%;
   font-size: 4rem;
 
 }
 
-.Headline h1{
+.Headline h1 {
   color: white;
   margin: auto;
   margin-top: 6.5rem;
   font-size: 4rem;
 }
 
-.Headline h2{
+.Headline h2 {
   font-size: 1rem;
-  color:white;
+  color: white;
   margin-top: 3rem;
 }
 
 .custom-table {
-    width: 90%;
-    border-collapse: separate;
-    top: 56rem; 
-    border-spacing: 2vw;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    min-width: 500px;
-    opacity: 1;
-    z-index: 1;
+  width: 60%;
+  border-collapse: separate;
+  top: 56rem;
+  border-spacing: 2vw;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 500px;
+  opacity: 1;
+  z-index: 1;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 0.2rem;
+  border-radius: 0.8rem;
+  white-space: nowrap;
+  border-bottom: 1px solid #ddd;
+}
+
+.custom-table tr:last-child td,
+.custom-table tr:last-child th {
+  border-bottom: none;
+}
+
+.price-cell.negative,
+.change-cell.negative,
+.price-cell.positive,
+.change-cell.positive {
+  font-size: 0.8rem;
+
+}
+
+.negative {
+  color: red;
+}
+
+.positive {
+  color: green;
+}
+
+@media (max-width: 1300px) {
+  .custom-table .hide-on-small-screen-1 {
+    display: none;
   }
-  
+}
+
+@media (max-width: 700px) {
+  .custom-table .hide-on-small-screen-2 {
+    display: none;
+  }
+
+  .custom-table {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
   .custom-table th,
   .custom-table td {
-    padding: 0.2rem;
-    border-radius: 0.8rem;
-    white-space: nowrap;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .custom-table tr:last-child td,
-  .custom-table tr:last-child th {
-    border-bottom: none;
-  }
-  
-  .price-cell.negative,
-  .change-cell.negative,
-  .price-cell.positive,
-  .change-cell.positive {
-    font-size: 0.8rem;
-
-  }
-  
-  .negative {
-    color: red;
-  }
-  
-  .positive {
-    color: green;
+    display: flex;
+    font-size: 2vw;
+    min-width: 60px;
   }
 
-  @media (max-width: 1300px) {
-    .custom-table .hide-on-small-screen-1 {
-      display: none;
-    }
+  .custom-table td.icon {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: red !important;
+  }
+
+  .IconRow{
+    
   }
   
-  @media (max-width: 700px) {
-    .custom-table .hide-on-small-screen-2 {
-      display: none;
-    }
-  
-    .custom-table {
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-  
-    .custom-table th,
-    .custom-table td {
-      font-size: 2vw;
-      min-width: 60px;
-    }
-  }
+
+
+}

@@ -25,7 +25,6 @@ export class CoinListComponent implements OnInit {
   PopulateTradingPairsBox() {
     this.Api.getTradingPairs().subscribe((data) => {
       this.Trading_Pairs = data;
-      console.log(this.Trading_Pairs.length);
     });
   }
 }

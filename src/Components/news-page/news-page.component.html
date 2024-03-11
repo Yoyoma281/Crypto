@@ -1,14 +1,16 @@
 <div class="Container">
     <article *ngFor="let article of TopArticles">
-        <h1>{{article.title}}</h1>
-        <div>
-            <div class="About">
-                {{article.publishedAt}}
-                {{article.author}}
+        <a href="{{article.url}}">
+            <h1>{{article.title}}</h1>
+            <div>
+                <div class="About">
+                    {{article.publishedAt}}
+                    {{article.author}}
+                </div>
+                {{article.description}}
+                <img height="150px" width="120px" src="{{article.urlToImage}}" alt="">
             </div>
-            {{article.description}}
-            <img height="150px" width="120px" src="{{article.urlToImage}}" alt="">
-        </div>
+        </a>
 
     </article>
 </div>

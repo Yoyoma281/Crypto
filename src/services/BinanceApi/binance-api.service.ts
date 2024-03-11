@@ -94,6 +94,9 @@ export class BinanceApiService {
       );
     }
   }
+   /**
+   *   returns all trading pairs on the market.
+   */
   getTradingPairs(): Observable<string[]> {
     const url = `${this.baseUrl}/exchangeInfo`;
 
@@ -106,19 +109,29 @@ export class BinanceApiService {
       })
     );
   }
-  //Retrieves all data about the coin
-  GetCoin(coin: string = 'BTCUSDT'): Observable<number> {
-    const apiUrl = `${this.baseUrl}?symbol=${coin}`;
+  /**
+   *   returns symbol, price and priceChangePercent data about the coin
+   */
+  GetCoin(coin: string = 'BTCUSDT'): Observable<any> {
+    const apiUrl = `${this.baseUrl}/ticker?symbol=${coin}`;
 
     return this.http.get<any>(apiUrl).pipe(
-      map((data) => parseFloat(data.price)),
+      map((data) => {
+        const symbol = data.symbol;
+        const price = parseFloat(data.price);
+        const priceChangePercent = parseFloat(data.priceChangePercent);
+
+        return { symbol, price, priceChangePercent };
+      }),
       catchError((error) => {
         console.error('Error fetching data:', error);
         throw error;
       })
     );
   }
-  //Starts a stream of the top 'NumberCfCoins' from the binance market
+  /**
+   *   Starts a stream of the top 'NumberOfCoins' from the binance market
+   */
   getTopCoins(numberOfCoins: number): Observable<any[]> {
     return interval(3000).pipe(
       switchMap(() => {
@@ -151,16 +164,16 @@ export class BinanceApiService {
       })
     );
   }
+  /** 
+   * 
+  */
+  
   getKlinesData(symbol: string, interval: string): Observable<any[]> {
     const params = {
       symbol: symbol,
       interval: interval,
     };
 
-    return this.http.get<any[]>(`${this.baseUrl}klines`, { params });
-  }
-  getPrice(coin: string) {
-    const url = `${this.baseUrl}/ticker?symbol=BTCUSDT`;
-    return this.http.get<any>(url);
+    return this.http.get<any[]>(`${this.baseUrl}/klines`, { params });
   }
 }

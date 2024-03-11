@@ -1,9 +1,8 @@
 <div class="container">
-    <button>info</button>
+    <a class="info" [routerLink]="['/Coin', Coin.symbol]">info</a>
     <h1>{{Coin.symbol}}</h1>
     <ul>
         <li>${{Coin.lastPrice}}</li>
         <li>%{{Coin.priceChangePercent}}</li>
-        <li></li>
     </ul>
 </div>

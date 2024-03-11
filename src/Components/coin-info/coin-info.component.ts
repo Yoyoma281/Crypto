@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { BinanceApiService } from '../../services/BinanceApi/binance-api.service';
-import { BinanceTrade } from '../../models/TradeData';
 import { Coin } from '../../models/Coin';
 
 @Component({
@@ -9,7 +8,7 @@ import { Coin } from '../../models/Coin';
   styleUrl: './coin-info.component.css',
 })
 export class CoinInfoComponent implements OnInit {
-  @Input() Coin: any;  
+  @Input() Coin!: Coin;  
   OneHourChange: number = 0 
   OneWeekChange: number = 0
 
@@ -20,11 +19,9 @@ export class CoinInfoComponent implements OnInit {
     }
   
     PriceChange() {
-      console.log("Coininfo: ", this.Coin)
       if (this.Coin) {
         const { symbol } = this.Coin;
-        console.log("IN")
-  
+        console.log("data recieved")
         this.Api.getKlinesData(symbol, '1w').subscribe((data) => {
           if (data.length > 0) {
             const openingPrice = parseFloat(data[0][1]); 

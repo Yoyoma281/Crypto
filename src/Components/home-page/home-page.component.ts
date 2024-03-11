@@ -8,7 +8,6 @@ import {
   HostListener,
 } from '@angular/core';
 import { Coin } from '../../models/Coin';
-import { BinanceTrade } from '../../models/TradeData';
 import { BinanceApiService } from '../../services/BinanceApi/binance-api.service';
 import { fadeInOut, fadeOnScroll } from '../../app/Shared/animations';
 import { HtmlParser } from '@angular/compiler';
@@ -31,7 +30,6 @@ export class HomePageComponent implements OnInit {
   PopulateCoinsWindows() {
     this.Api.getTopCoins(2).subscribe((data) => {
       this.Coins = data;
-      console.log("CoinsWindowData",this.Coins);
     });
   }
 }

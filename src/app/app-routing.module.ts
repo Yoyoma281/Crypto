@@ -12,17 +12,11 @@ import { TrendingPageComponent } from '../Components/trending-page/trending-page
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'About', component: AboutPageComponent },
-  { path: 'Coin', component: CoinPageComponent },
+  { path: 'Coin/:symbol', component: CoinPageComponent },
   { path: 'Contact', component: ContactPageComponent },
   { path: 'Market', component: MarketPageComponent },
   { path: 'News', component: NewsPageComponent },
   { path: 'Trending', component: TrendingPageComponent },
-
-
-
-  
-
-
 
 ];
 

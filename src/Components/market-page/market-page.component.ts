@@ -8,7 +8,6 @@ import {
   HostListener,
 } from '@angular/core';
 import { Coin } from '../../models/Coin';
-import { BinanceTrade } from '../../models/TradeData';
 import { BinanceApiService } from '../../services/BinanceApi/binance-api.service';
 import { fadeInOut, fadeOnScroll } from '../../app/Shared/animations';
 import { HtmlParser } from '@angular/compiler';

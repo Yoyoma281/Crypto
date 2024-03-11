@@ -3,20 +3,28 @@
     <h1>Unlocking Financial Freedom</h1>
     <h2>Explore the Latest Trends and Opportunities in the Crypto Market</h2>
   </div>
-  <img src="./assets/HomePageImage2.png" alt="">
+  <img src="./assets/Images/HomePageImage2.png" alt="">
   <table class="custom-table">
     <thead>
       <tr>
-        <th class="">Coin</th>
-        <th class="">Latest Price</th>
+        <th class="IconRow hide-on-small-screen-1">Icon</th>
+        <th class="hide-on-small-screen-1">Coin</th>
+        <th class="hide-on-small-screen-1">Latest Price</th>
         <th class="hide-on-small-screen-1">24h%</th>
         <th class="hide-on-small-screen-1">1h%</th>
-        <th class="hide-on-small-screen-1">7d%</th>
+        <!-- <th class="hide-on-small-screen-1">7d%</th> -->
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let Coin of CoinsTable">
-        <td class="">{{ Coin.symbol }}</td>
+        <td class="icon">
+          <img src='./assets/Coin-icons/{{Coin.symbol.replace("USDT", "").toLowerCase()}}.svg'
+            onerror="this.src='./assets/Coin-icons/not-available-circle.png'" height="40px" width="40px">
+        </td>
+        <td class="symbol-cell">
+          {{ Coin.symbol }}
+        </td>
+
         <td class="price-cell" [ngClass]="{ 'negative': Coin.lastPrice < 0, 'positive': Coin.lastPrice >= 0 }">
           ${{ Coin.lastPrice }}
         </td>
@@ -35,7 +43,7 @@
       </tr>
     </tbody>
   </table>
-  
-  
-  
+
+
+
 </div>

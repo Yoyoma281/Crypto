@@ -33,7 +33,7 @@ h1 {
   transition: opacity 0.3s ease-in;
 }
 
-button {
+.info {
   opacity: 0;
   transition: opacity 0.3s ease-in; 
   font-size: 1rem;
@@ -42,10 +42,6 @@ button {
   left: 94%;
   transform: translate(-50%, -50%);
 
-}
-
-button:hover{
-  
 }
 
 .container:hover {
@@ -57,7 +53,7 @@ button:hover{
     opacity: 0;
   }
 
-  button {
+  .info {
     opacity: 1;
   }
 }
