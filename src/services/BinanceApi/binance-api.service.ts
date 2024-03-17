@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   Observable,
@@ -63,7 +63,10 @@ export class BinanceApiService {
 
     const mergedObservable = merge(...Object.values(coinStreams));
 
-    return mergedObservable.pipe(throttleTime(2000));
+    //If the number of requests becomes too frequent, 
+    //an HTTP error may occur, indicating that there have been too many requests. 
+    //This error does not halt the flow of data but rather serves as a notification of the excessive request rate.
+    return mergedObservable.pipe(throttleTime(5000));
   }
   stopWebSocket(): void {
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
@@ -110,19 +113,12 @@ export class BinanceApiService {
     );
   }
   /**
-   *   returns symbol, price and priceChangePercent data about the coin
+   *   returns coin data, based on Coin model.
    */
   GetCoin(coin: string = 'BTCUSDT'): Observable<any> {
     const apiUrl = `${this.baseUrl}/ticker?symbol=${coin}`;
 
     return this.http.get<any>(apiUrl).pipe(
-      map((data) => {
-        const symbol = data.symbol;
-        const price = parseFloat(data.price);
-        const priceChangePercent = parseFloat(data.priceChangePercent);
-
-        return { symbol, price, priceChangePercent };
-      }),
       catchError((error) => {
         console.error('Error fetching data:', error);
         throw error;
@@ -164,16 +160,37 @@ export class BinanceApiService {
       })
     );
   }
-  /** 
-   * 
-  */
   
-  getKlinesData(symbol: string, interval: string): Observable<any[]> {
-    const params = {
-      symbol: symbol,
-      interval: interval,
-    };
+  getKlinesData(symbol: string, interval: string, startTime?: number, endTime?: number): Observable<any[]> {
+    let params = new HttpParams()
+      .set('symbol', symbol)
+      .set('interval', interval);
+    
+    if (startTime !== undefined) {
+      params = params.set('startTime', startTime.toString());
+    }
 
-    return this.http.get<any[]>(`${this.baseUrl}/klines`, { params });
+    if (endTime !== undefined) {
+      params = params.set('endTime', endTime.toString());
+    }
+
+    return this.http.get<any[]>(`${this.baseUrl}/klines`, { params }).pipe(
+      map(responseData => {
+        return responseData.map(data => ({
+          timestamp: data[0],
+          open: parseFloat(data[1]),
+          high: parseFloat(data[2]),
+          low: parseFloat(data[3]),
+          close: parseFloat(data[4]),
+          volume: parseFloat(data[5]),
+          closeTime: data[6],
+          quoteAssetVolume: parseFloat(data[7]),
+          numberOfTrades: data[8],
+          takerBuyBaseAssetVolume: parseFloat(data[9]),
+          takerBuyQuoteAssetVolume: parseFloat(data[10]),
+          ignore: parseFloat(data[11])
+        }));
+      })
+    );
   }
 }

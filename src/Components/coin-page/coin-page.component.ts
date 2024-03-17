@@ -3,6 +3,7 @@ import { Coin } from '../../models/Coin';
 import { Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BinanceApiService } from '../../services/BinanceApi/binance-api.service';
+import { DataChartComponent } from '../data-chart/data-chart.component';
 
 @Component({
   selector: 'app-coin-page',
@@ -10,25 +11,28 @@ import { BinanceApiService } from '../../services/BinanceApi/binance-api.service
   styleUrl: './coin-page.component.css',
 })
 export class CoinPageComponent implements OnInit {
-  symbol: string = '';
   coin!: Coin;
+
   constructor(private route: ActivatedRoute, private Api: BinanceApiService) {}
 
   ngOnInit(): void {
-    this.symbol = this.route.snapshot.params['symbol'];
-    this.GetCoin();
+    const symbol = this.route.snapshot.params['symbol'];
+    this.GetCoin(symbol);
   }
-  GetCoin() {
-    if (this.symbol) {
-      this.Api.GetCoin(this.symbol).subscribe((data) => {
-        if (this.coin) {
+  GetCoin(coin: string) {
+    if (coin) {
+      this.Api.GetCoin(coin).subscribe((data) => {
+        if (coin) {
           this.coin = data;
+          console.log(this.coin);
         } else {
-          console.error(`Coin is ${this.coin} `);
+          console.error(`Coin is ${coin} `);
         }
       });
     } else {
-      console.error(`Symbol ${this.symbol} is invalid`);
+      console.error(`Symbol ${coin} is invalid`);
     }
   }
+
+  
 }

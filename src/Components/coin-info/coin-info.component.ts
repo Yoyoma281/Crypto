@@ -18,21 +18,23 @@ export class CoinInfoComponent implements OnInit {
       this.PriceChange()
     }
   
+    
     PriceChange() {
-      if (this.Coin) {
-        const { symbol } = this.Coin;
-        console.log("data recieved")
-        this.Api.getKlinesData(symbol, '1w').subscribe((data) => {
-          if (data.length > 0) {
-            const openingPrice = parseFloat(data[0][1]); 
-            const closingPrice = parseFloat(data[data.length - 1][4]); 
+    //   if (this.Coin) {
+    //     const { symbol } = this.Coin;
+    //     console.log("data recieved")
+    //     this.Api.getKlinesData(symbol, '1w').subscribe((data) => {
+    //       if (data.length > 0) {
+    //         const openingPrice = parseFloat(data[0][1]); 
+    //         const closingPrice = parseFloat(data[data.length - 1][4]); 
   
-            this.OneWeekChange = (closingPrice - openingPrice) / openingPrice * 100;
-          }
-        });
-      }
-    }
+    //         this.OneWeekChange = (closingPrice - openingPrice) / openingPrice * 100;
+    //       }
+    //     });
+    //   }
+    // }
   }
+}
   
   
 

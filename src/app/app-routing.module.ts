@@ -8,6 +8,7 @@ import { AboutPageComponent } from '../Components/about-page/about-page.componen
 import { CoinPageComponent } from '../Components/coin-page/coin-page.component';
 import { NewsPageComponent } from '../Components/news-page/news-page.component';
 import { TrendingPageComponent } from '../Components/trending-page/trending-page.component';
+import { DataChartComponent } from '../Components/data-chart/data-chart.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },

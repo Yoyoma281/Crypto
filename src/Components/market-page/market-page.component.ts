@@ -42,6 +42,7 @@ export class MarketPageComponent {
     this.Api.getTopCoins(5).subscribe((data) => {
       if (Array.isArray(data) && data.length > 0) {
         this.CoinsTable = data;
+        this.loading = false
       } else {
         console.error('Invalid data structure or empty array');
       }

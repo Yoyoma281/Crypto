@@ -10,6 +10,7 @@ import { Article } from '../../models/Articles';
 export class NewsPageComponent implements OnInit {
   private articles: Article[] = []
   TopArticles: Article[] = []
+  Article!: Article
 
   constructor(private News: NewsApiService) { }
 
@@ -17,11 +18,15 @@ export class NewsPageComponent implements OnInit {
     this.GetNews();
   }
 
+  TitleClicked(article: Article){
+    this.Article = article
+  }
+
   GetNews() {
     this.News.getNews().subscribe((data) => {
       this.articles = data.articles
       console.log("news comp: ", this.articles)
-      this.TopArticles = this.articles.slice(0, 3)
+      this.TopArticles = this.articles.slice(0, 100)
     })
   }
 }

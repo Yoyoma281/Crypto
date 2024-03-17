@@ -13,12 +13,16 @@ import { AboutPageComponent } from '../Components/about-page/about-page.componen
 import { NewsPageComponent } from '../Components/news-page/news-page.component';
 import { TrendingPageComponent } from '../Components/trending-page/trending-page.component';
 import { CoinPageComponent } from '../Components/coin-page/coin-page.component';
+import { provideCharts, withDefaultRegisterables} from 'ng2-charts';
+import { DataChartComponent } from '../Components/data-chart/data-chart.component';
+import { LoadingAnimtaionComponent } from '../Components/loading-animtaion/loading-animtaion.component';
+
 
 
 @NgModule({
-  declarations: [AppComponent, CoinListComponent, CoinInfoComponent, HomePageComponent, ContactPageComponent, MarketPageComponent, AboutPageComponent, NewsPageComponent, TrendingPageComponent, CoinPageComponent],
+  declarations: [AppComponent, CoinListComponent, CoinInfoComponent, HomePageComponent, ContactPageComponent, MarketPageComponent, AboutPageComponent, NewsPageComponent, TrendingPageComponent, CoinPageComponent, DataChartComponent, LoadingAnimtaionComponent],
   imports: [BrowserAnimationsModule, BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  providers: [provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

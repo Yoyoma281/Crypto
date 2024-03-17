@@ -1,16 +1,22 @@
 <div class="Container">
-    <article *ngFor="let article of TopArticles">
-        <a href="{{article.url}}">
-            <h1>{{article.title}}</h1>
+Make menu open when clickd on.
+    <div class="titles">
+        <div class="title" (click)="TitleClicked(article)" *ngFor="let article of TopArticles">
+            {{article.title}}
+        </div>
+    </div>
+
+    <article *ngIf="Article">
+        <a href="{{Article.url}}">
+            <h1>{{Article.title}}</h1>
             <div>
                 <div class="About">
-                    {{article.publishedAt}}
-                    {{article.author}}
+                    {{Article.publishedAt}}
+                    {{Article.author}}
                 </div>
-                {{article.description}}
-                <img height="150px" width="120px" src="{{article.urlToImage}}" alt="">
+                {{Article.description}}
+                <img Article="150px" width="120px" src="{{Article.urlToImage}}" alt="">
             </div>
         </a>
-
     </article>
 </div>

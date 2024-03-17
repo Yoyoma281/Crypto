@@ -9,6 +9,7 @@
   z-index: 0;
   background-color: #212529;
   gap: 4.5rem;
+  padding: 1rem;
 }
 
 .Headline {
@@ -43,26 +44,34 @@
   z-index: 1;
 }
 
-.custom-table th,
-.custom-table td {
+th,
+td {
   padding: 0.2rem;
   border-radius: 0.8rem;
   white-space: nowrap;
   border-bottom: 1px solid #ddd;
 }
 
-.custom-table tr:last-child td,
-.custom-table tr:last-child th {
+tr:last-child td,
+tr:last-child th {
   border-bottom: none;
 }
+
 
 .price-cell.negative,
 .change-cell.negative,
 .price-cell.positive,
 .change-cell.positive {
   font-size: 0.8rem;
-
 }
+
+.InfoIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 
 .negative {
   color: red;
@@ -96,16 +105,9 @@
   }
 
   .custom-table td.icon {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    background-color: red !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-
-  .IconRow{
-    
-  }
-  
-
 
 }
