@@ -10,7 +10,9 @@ import {
   EMPTY,
   interval,
   switchMap,
+  forkJoin,
 } from 'rxjs';
+import { Coin } from '../../models/Coin';
 
 @Injectable({
   providedIn: 'root',
@@ -63,8 +65,8 @@ export class BinanceApiService {
 
     const mergedObservable = merge(...Object.values(coinStreams));
 
-    //If the number of requests becomes too frequent, 
-    //an HTTP error may occur, indicating that there have been too many requests. 
+    //If the number of requests becomes too frequent,
+    //an HTTP error may occur, indicating that there have been too many requests.
     //This error does not halt the flow of data but rather serves as a notification of the excessive request rate.
     return mergedObservable.pipe(throttleTime(5000));
   }
@@ -97,7 +99,7 @@ export class BinanceApiService {
       );
     }
   }
-   /**
+  /**
    *   returns all trading pairs on the market.
    */
   getTradingPairs(): Observable<string[]> {
@@ -160,12 +162,11 @@ export class BinanceApiService {
       })
     );
   }
-  
-  getKlinesData(symbol: string, interval: string, startTime?: number, endTime?: number): Observable<any[]> {
+  getKlinesData(symbol: string,interval: string,startTime?: number,endTime?: number): Observable<any[]> {
     let params = new HttpParams()
       .set('symbol', symbol)
       .set('interval', interval);
-    
+
     if (startTime !== undefined) {
       params = params.set('startTime', startTime.toString());
     }
@@ -175,8 +176,8 @@ export class BinanceApiService {
     }
 
     return this.http.get<any[]>(`${this.baseUrl}/klines`, { params }).pipe(
-      map(responseData => {
-        return responseData.map(data => ({
+      map((responseData) => {
+        return responseData.map((data) => ({
           timestamp: data[0],
           open: parseFloat(data[1]),
           high: parseFloat(data[2]),
@@ -188,9 +189,32 @@ export class BinanceApiService {
           numberOfTrades: data[8],
           takerBuyBaseAssetVolume: parseFloat(data[9]),
           takerBuyQuoteAssetVolume: parseFloat(data[10]),
-          ignore: parseFloat(data[11])
+          ignore: parseFloat(data[11]),
         }));
       })
     );
+  }
+  GetHourlyChange(coins: Coin[]) {
+    const currentTime = Date.now();
+    const oneHourAgo = currentTime - 60 * 60 * 1000; // 1 hour ago in milliseconds
+  
+    // Create observables for each coin
+    const observables = coins.map((coin) => {
+      return this.getKlinesData(coin.symbol, '1h', oneHourAgo, currentTime);
+    });
+  
+    // Subscribe to the array of observables
+    forkJoin(observables).subscribe(dataArrays => {
+      // Iterate over each data array
+      dataArrays.forEach((data, index) => {
+        // Calculate hourly change percentage for the current coin
+        const priceChange = data[data.length - 1].close - data[0].open;
+        const hourlyChangePercent = (priceChange / data[0].open) * 100;
+        
+        // Assign hourly change percentage to the corresponding coin object
+        coins[index].HourlyPriceChangePercent = hourlyChangePercent;
+      });
+    });
+
   }
 }

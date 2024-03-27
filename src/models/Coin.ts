@@ -2,6 +2,7 @@ export interface Coin {
   symbol: string;
   priceChange: number; 
   priceChangePercent: number; 
+  HourlyPriceChangePercent: number;
   weightedAvgPrice: number; 
   openPrice: number; 
   highPrice: number; 

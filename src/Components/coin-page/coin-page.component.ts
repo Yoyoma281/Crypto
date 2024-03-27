@@ -4,6 +4,7 @@ import { Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BinanceApiService } from '../../services/BinanceApi/binance-api.service';
 import { DataChartComponent } from '../data-chart/data-chart.component';
+import { ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-coin-page',
@@ -11,6 +12,9 @@ import { DataChartComponent } from '../data-chart/data-chart.component';
   styleUrl: './coin-page.component.css',
 })
 export class CoinPageComponent implements OnInit {
+  @ViewChild('chartCanvas', { static: true })
+  chartCanvasRef!: ElementRef<HTMLCanvasElement>;
+  currentDateTime:number = 0
   coin!: Coin;
 
   constructor(private route: ActivatedRoute, private Api: BinanceApiService) {}
@@ -18,6 +22,7 @@ export class CoinPageComponent implements OnInit {
   ngOnInit(): void {
     const symbol = this.route.snapshot.params['symbol'];
     this.GetCoin(symbol);
+    this.currentDateTime = new Date().getTime()
   }
   GetCoin(coin: string) {
     if (coin) {
@@ -33,6 +38,4 @@ export class CoinPageComponent implements OnInit {
       console.error(`Symbol ${coin} is invalid`);
     }
   }
-
-  
 }

@@ -11,6 +11,8 @@ import { Coin } from '../../models/Coin';
 import { BinanceApiService } from '../../services/BinanceApi/binance-api.service';
 import { fadeInOut, fadeOnScroll } from '../../app/Shared/animations';
 import { HtmlParser } from '@angular/compiler';
+import { HourlyChangePipe } from '../../pipes/HourlyChangePercentage/hourly-change.pipe';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-market-page',
@@ -23,7 +25,7 @@ export class MarketPageComponent {
     private el: ElementRef,
     private Api: BinanceApiService
   ) {}
-  
+
   title = 'CryptoAPI';
   MarketData: any;
   CoinsTable: Coin[] = [];
@@ -33,16 +35,14 @@ export class MarketPageComponent {
   ngOnInit(): void {
     this.PopulateCoinsTable();
   }
-  Apiservice(coins: string[]) {
-    // this.Api.StartTradeSocket(coins).subscribe((data) => {
-    //   this.CoinsTable = data as Coin [];
-    // });
-  }
+  
+
   PopulateCoinsTable() {
     this.Api.getTopCoins(5).subscribe((data) => {
       if (Array.isArray(data) && data.length > 0) {
         this.CoinsTable = data;
-        this.loading = false
+        this.loading = false;
+        console.log(data);
       } else {
         console.error('Invalid data structure or empty array');
       }

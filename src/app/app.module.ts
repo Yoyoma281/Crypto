@@ -16,11 +16,12 @@ import { CoinPageComponent } from '../Components/coin-page/coin-page.component';
 import { provideCharts, withDefaultRegisterables} from 'ng2-charts';
 import { DataChartComponent } from '../Components/data-chart/data-chart.component';
 import { LoadingAnimtaionComponent } from '../Components/loading-animtaion/loading-animtaion.component';
+import { HourlyChangePipe } from '../pipes/HourlyChangePercentage/hourly-change.pipe';
 
 
 
 @NgModule({
-  declarations: [AppComponent, CoinListComponent, CoinInfoComponent, HomePageComponent, ContactPageComponent, MarketPageComponent, AboutPageComponent, NewsPageComponent, TrendingPageComponent, CoinPageComponent, DataChartComponent, LoadingAnimtaionComponent],
+  declarations: [AppComponent, CoinListComponent, CoinInfoComponent, HomePageComponent, ContactPageComponent, MarketPageComponent, AboutPageComponent, NewsPageComponent, TrendingPageComponent, CoinPageComponent, DataChartComponent, LoadingAnimtaionComponent, HourlyChangePipe],
   imports: [BrowserAnimationsModule, BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent],

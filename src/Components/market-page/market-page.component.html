@@ -36,7 +36,9 @@
         </td>
         <td class="change-cell hide-on-small-screen-1"
           [ngClass]="{ 'negative': Coin.priceChange < 0, 'positive': Coin.priceChange >= 0 }">
-          {{ Coin.priceChange > 0 ? "+" : "" }} {{ Coin.priceChange }}%
+          {{ Coin.HourlyPriceChangePercent > 0 ? "+" : "" }} {{ Coin.HourlyPriceChangePercent }}
+          %
+
         </td>
         <!-- <td class=" change-cell hide-on-small-screen-1"
           [ngClass]="{ 'negative': Coin.priceChange.weeklyChange < 0, 'positive': Coin.priceChange.weeklyChange >= 0 }">
