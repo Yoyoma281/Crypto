@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,200;1,300;1,400&family=Sora&family=Ubuntu:ital,wght@0,400;0,500;1,300;1,400&display=swap');
+
+.custom-container {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 0;
+}
+
+.Headline {
+  background: linear-gradient(to right, #06204c, #223855, #55123a);
+  display: flex;
+  padding-left: 2rem;
+  padding-top: 2rem;
+  width: 100%;
+  height: 50rem;
+  text-align: left;
+  font-size: 6rem;
+  font-weight: 550;
+  opacity: 1;
+  color: white;
+  position: relative;
+  justify-content: center;
+}
+
+.coins{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  position: absolute;
+  top: 47rem;
+}
+
+
+.description {
+  background-color: #212529;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 5%;
+}
+
+.description>img {
+  height: 24rem;
+  width: 40rem;
+
+}
+
+.window {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem;
+  gap: 1vw;
+  width: 100%;
+  margin: 25%;
+  color: white;
+
+}
+
+.window>img {
+  width: fit-content;
+  height: 30rem;
+  border-width: 1px;
+  border-color: #06204c;
+  border-radius: 20%;
+}
+

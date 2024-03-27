@@ -1,0 +1,107 @@
+ .Container {
+     width: 100%;
+     min-height: 100vh;
+     margin: 0 auto;
+     position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: top;
+     gap: 3rem;
+     z-index: 0;
+     background-color: white;
+ }
+
+
+ article h1 {
+     font-size: 0.8rem;
+     font-weight: 600;
+     margin-bottom: 3%;
+ }
+
+ #titles {
+     position: absolute;
+     right: -10rem;
+     /* Initial position off-screen */
+     top: 3rem;
+     width: 10rem;
+     height: 100%;
+     padding: 0;
+     background-color: rgb(70, 23, 23);
+     overflow-y: auto;
+     scrollbar-width: none;
+     display: none;
+     transition: right 0.3s ease;
+ }
+
+ #titles.visible {
+     right: 0;
+     /* Move the section into view */
+     display: block;
+ }
+
+ #TitlesButton {
+     position: absolute;
+     top: 5rem;
+     right: 1.5rem;
+     width: 1rem;
+     height: 2rem;
+ }
+
+ .title {
+     margin: 4rem;
+     /* Add spacing between titles */
+     cursor: pointer;
+     /* Add cursor style */
+ }
+
+ .title:hover {
+     color: blue;
+     /* Change color on hover */
+ }
+
+ article:hover {
+     /* box-shadow: 3px 3px rgba(0, 0, 0, 0.8);
+     transform: translate(-4px, -4px); */
+
+
+ }
+
+ .articles-section {
+     display: flex;
+     flex-wrap: wrap;
+     justify-self: center;
+     align-items: center;
+     gap: 4rem;
+     padding: 2rem;
+     font-size: 10px;
+ }
+
+
+
+ article {
+     height: 5rem;
+     width: 15rem;
+     border-radius: 50%;
+     transition: box-shadow 0.3s ease, transform 0.3s ease;
+     /* overflow: hidden; */
+     background-repeat: no-repeat;
+     background-size: cover;
+     color: black;
+ }
+ 
+
+ article:hover{
+    color: blue;
+    opacity: 0.8;
+ }
+
+
+ article img {
+     height: 15rem;
+     width: 100%;
+     border-radius: 5%;
+ }
+
+ article .About, h1 {
+    /* background-color: red; */
+ }

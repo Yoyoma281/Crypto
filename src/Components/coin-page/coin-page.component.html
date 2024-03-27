@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="Chart-Container" *ngIf="coin">
+        {{coin.symbol}}
+        <img src='./assets/Coin-icons/{{coin.symbol.replace("USDT", "").toLowerCase()}}.svg'>
+        <div class="coin">
+            {{coin.lastPrice}}
+        </div>
+        <app-data-chart [Symbol]="coin.symbol" [interval]="'1M'" [startTime]="1679349600000"
+            [endTime]="currentDateTime"></app-data-chart>
+    </div>
+</div>

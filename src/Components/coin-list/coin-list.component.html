@@ -1,0 +1,3 @@
+<select (change)="CoinSelectChange($event)" name="CoinsList" id="">
+  <option *ngFor="let coin of Trading_Pairs" [value]="coin">{{coin}}</option>
+</select>

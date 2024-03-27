@@ -1,0 +1,113 @@
+.Container {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 0;
+  background-color: #212529;
+  gap: 4.5rem;
+  padding: 1rem;
+}
+
+.Headline {
+  width: 100%;
+  font-size: 4rem;
+
+}
+
+.Headline h1 {
+  color: white;
+  margin: auto;
+  margin-top: 6.5rem;
+  font-size: 4rem;
+}
+
+.Headline h2 {
+  font-size: 1rem;
+  color: white;
+  margin-top: 3rem;
+}
+
+.custom-table {
+  width: 60%;
+  border-collapse: separate;
+  top: 56rem;
+  border-spacing: 2vw;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 500px;
+  opacity: 1;
+  z-index: 1;
+}
+
+th,
+td {
+  padding: 0.2rem;
+  border-radius: 0.8rem;
+  white-space: nowrap;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:last-child td,
+tr:last-child th {
+  border-bottom: none;
+}
+
+
+.price-cell.negative,
+.change-cell.negative,
+.price-cell.positive,
+.change-cell.positive {
+  font-size: 0.8rem;
+}
+
+.InfoIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.negative {
+  color: red;
+}
+
+.positive {
+  color: green;
+}
+
+@media (max-width: 1300px) {
+  .custom-table .hide-on-small-screen-1 {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .custom-table .hide-on-small-screen-2 {
+    display: none;
+  }
+
+  .custom-table {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .custom-table th,
+  .custom-table td {
+    display: flex;
+    font-size: 2vw;
+    min-width: 60px;
+  }
+
+  .custom-table td.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
