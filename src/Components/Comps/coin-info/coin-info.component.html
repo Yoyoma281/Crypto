@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="fade-in" *ngIf="Coin">
+        <a class="info" [routerLink]="['/Coin', Coin.symbol]">info</a>
+        <img src='./assets/Coin-icons/{{Coin.symbol.replace("USDT", "").toLowerCase()}}.svg'>
+        <ul>
+           <li>{{Coin.symbol}}</li>
+            <li><h1>Last price</h1><div [ngClass]="{'flash-green': PriceUp, 'flash-red': !PriceUp}">{{Coin.lastPrice}}$</div></li>
+            <li><h1>24h change </h1> {{Coin.priceChangePercent}}%</li>
+            <li></li>
+        </ul>
+        <!-- <ul>
+            <li>ETHUSDT</li>
+             <li><h1>Last price</h1>13123123$</li>
+             <li><h1>24h change </h1> 13%</li>
+             <li></li>
+         </ul> -->
+    </div>
+
+
+    <app-loading-animtaion *ngIf="!Coin"></app-loading-animtaion>
+
+</div>  

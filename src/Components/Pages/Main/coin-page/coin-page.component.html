@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="Side Trading">
+        <div class="Buy-Sell-Buttons">
+            <button class="Buy-button">BUY</button>
+            <button class="Sell-button">SELL</button>
+        </div>
+        <span> Available: </span>
+    </div>
+    <div class="Chart-Container" *ngIf="coin">
+        {{coin.symbol}}
+        <img src='./assets/Coin-icons/{{coin.symbol.replace("USDT", "").toLowerCase()}}.svg'>
+        <div class="coin">
+            {{coin.lastPrice}}
+        </div>
+        <ul>
+            <li><a href="javascript:void(0)" (click)="SelectTimeFrame('1m')">1 minute</a></li>
+            <li><a href="javascript:void(0)" (click)="SelectTimeFrame('1h')">1 hour</a></li>
+            <li><a href="javascript:void(0)" (click)="SelectTimeFrame('1d')">1 day</a></li>
+            <li><a href="javascript:void(0)" (click)="SelectTimeFrame('1w')">1 week</a></li>
+            <li><a href="javascript:void(0)" (click)="SelectTimeFrame('1M')">1 month</a></li>
+        </ul>
+
+        <app-data-chart #dataChartComponent [Symbol]="coin.symbol" [TimeFrame]="TimeFrameSelected"
+            [startTime]="StartTime" [endTime]="EndTime"></app-data-chart>
+    </div>
+
+    <div class="Side News">
+        News:
+    </div>
+</div>

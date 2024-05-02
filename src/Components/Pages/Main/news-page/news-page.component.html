@@ -1,0 +1,24 @@
+<div class="Container" *ngIf="TopArticles">
+    <!-- <div id="titles">
+        <div class="title" (click)="TitleClicked(article)" *ngFor="let article of TopArticles">
+            {{article.title}}
+        </div>
+    </div> -->
+    <!-- <button id="TitlesButton" (click)="togglemenu()" title="Click to open menu"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" style="fill: rgb(254, 253, 253);"><path d="m12.707 7.707-1.414-1.414L5.586 12l5.707 5.707 1.414-1.414L8.414 12z"></path><path d="M16.293 6.293 10.586 12l5.707 5.707 1.414-1.414L13.414 12l4.293-4.293z"></path></svg></button> -->
+    <div class="articles-section">
+        <article *ngFor="let Article of TopArticles">
+            <a href="{{Article.url}}" target="_blank" title="{{Article.url}}">
+                <img src="{{Article.urlToImage}}" alt="no img available">
+                <h1>{{Article.title}}</h1>
+                <div class="About">
+                    {{Article.publishedAt | date:'dd/MM/yyyy HH:MM'}}
+                    {{Article.author}}
+                </div>
+                <!-- {{Article.description}} -->
+            </a>
+        </article>
+    </div>
+
+    <app-loading-animtaion *ngIf="!articles"></app-loading-animtaion>
+
+</div>

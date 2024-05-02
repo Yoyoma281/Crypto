@@ -1,0 +1,63 @@
+<!-- <app-loading-animation *ngIf="loading"></app-loading-animation> -->
+
+<div class="custom-container">
+  <div class="Headline" [@fadeInOut]>
+    <span class="main-headline">Welcome to DemoCrypto</span>
+    <span class="sub-headline"> Welcome to DemoCrypto, Here, you can track the cryptocurrencies you've "purchased" and
+      witness their simulated real-time price movements. Dive into the exciting world of digital assets without risking
+      real money.</span>
+  </div>
+
+
+  <main>
+    <section>
+      <div class="description">
+        <div class="coins">
+          <span>Keep track with a live feed of different coins</span>
+          <app-coin-info [Coin]="Coins[0]"></app-coin-info>
+          <app-coin-info [Coin]="Coins[1]"> </app-coin-info>
+        </div>
+        <div class="window">
+          <div class="text">
+            Explore the exciting world of peer-to-peer trading and connect with other users looking to buy or sell
+            cryptocurrencies. Experience the freedom and flexibility of trading directly with your peers.
+            <br><br>
+            <a class="info" [routerLink]="['/Market']">More info
+              <img src='./assets/GeneralUseageIcons/RightArrow.svg' height="12px" width="12px">
+            </a>
+          </div>
+          <img src="./assets/Images/Trade.jpg">
+        </div>
+        <div class="window">
+          <div class="text">
+            Stay Informed with the Latest Trends and News
+            Explore the ever-changing landscape of cryptocurrencies and stay ahead of the curve with our curated
+            selection
+            of the latest trends and news. Whether you're a seasoned trader or just starting out, our comprehensive
+            coverage keeps you informed and empowered.
+            <br><br>
+            <a class="info" [routerLink]="['/News']">More info
+              <img src='./assets/GeneralUseageIcons/RightArrow.svg' height="12px" width="12px">
+            </a>
+          </div>
+          <img src="./assets/Images/Description photo.png">
+        </div>
+        <div class="window">
+          <div class="text">
+            Unlock the power of digital assets and start building your investment portfolio today. With our platform,
+            purchasing cryptocurrencies has never been easier. Whether you're a seasoned investor or just getting
+            started,
+            our intuitive interface makes it simple to buy your favorite coins and tokens.
+            <br><br>
+            <a class="info" [routerLink]="['/Market']">More info
+              <img src='./assets/GeneralUseageIcons/RightArrow.svg' height="12px" width="12px">
+            </a>
+          </div>
+          <img src="./assets/Images/Buy.jpg">
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+</div>

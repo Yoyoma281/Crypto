@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,200;1,300;1,400&family=Sora&family=Ubuntu:ital,wght@0,400;0,500;1,300;1,400&display=swap');
+
+.custom-container {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 0;
+}
+
+.Headline {
+  background: linear-gradient(to right, #06204c, #223855, #55123a);
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem;
+  padding-top: 2rem;
+  width: 100%;
+  height: 50rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  gap: 3rem;
+}
+
+.Headline .main-headline {
+  position: absolute;
+  font-size: 5.5rem;
+  top: 21%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-wrap: nowrap;
+}
+
+
+.Headline .sub-headline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  text-align: center;
+  font-size: 1.5rem;
+  /* text-wrap: nowrap; */
+}
+
+.coins {
+  position: relative;
+  /* Add this line */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10rem;
+  height: 30rem;
+  /* background-color: red; */
+}
+
+.description .coins span {
+  /* background-color: red; */
+  color: white;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 0;
+  /* Position at the top */
+  left: 50%;
+  /* Position at the left */
+  transform: translate(-50%, -50%);
+
+}
+
+
+.description {
+  background-color: #212529;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* min-height: 100vh; */
+  width: 100vw;
+  padding: 5%;
+
+}
+
+.description>img {
+  height: 24rem;
+  width: 40rem;
+
+}
+
+.window {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  padding: 3rem;
+  width: 100%;
+  margin: 15%;
+  gap: 3rem;
+  color: white;
+}
+
+.window .info {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+}
+
+.window .info img {
+  vertical-align: middle;
+  margin-left: 5px;
+  height: 2rem;
+  width: 2rem;
+
+}
+
+.window>img {
+  width: fit-content;
+  height: 30rem;
+  /* border-width: 1px; */
+  /* border-color: #06204c; */
+  border-radius: 20%;
+}
