@@ -9,14 +9,14 @@ import { Article } from '../../../models/Articles';
 export class NewsApiService {
   private apiUrl = 'https://newsapi.org/v2/everything';
   private apiKey = '2d68032cb7464311b4a5ac763d8b667c';
+  private FromDate = Date.now() - 7
   constructor(private http: HttpClient) { }
 
   getNews(): Observable<any> {
-    const fromDate = '2024-04-03';
     const sortBy = 'publishedAt';
     const query = 'Crypto';
 
-    const url = `${this.apiUrl}?q=${query}&from=${fromDate}&sortBy=${sortBy}&apiKey=${this.apiKey}`;
+    const url = `${this.apiUrl}?q=${query}&from=${this.FromDate}&sortBy=${sortBy}&apiKey=${this.apiKey}`;
 
     return this.http.get<Article>(url);
   }

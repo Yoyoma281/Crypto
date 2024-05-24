@@ -20,11 +20,12 @@
             <li><a href="javascript:void(0)" (click)="SelectTimeFrame('1M')">1 month</a></li>
         </ul>
 
-        <app-data-chart #dataChartComponent [Symbol]="coin.symbol" [TimeFrame]="TimeFrameSelected"
-            [startTime]="StartTime" [endTime]="EndTime"></app-data-chart>
+        <app-data-chart #dataChartComponent [Symbol]="coin.symbol" [TimeFrame]="TimeFrameSelected"></app-data-chart>
     </div>
 
     <div class="Side News">
-        News:
+        <!-- News: <article *ngFor="let Article of News">
+             {{Article.author}}
+            </article> -->
     </div>
 </div>

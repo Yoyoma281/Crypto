@@ -5,6 +5,8 @@ import { BinanceApiService } from '../../../../services/Api/BinanceApi/binance-a
 import { ScrollToTopService } from '../../../../services/Accessories/scrolling/scrolling.service';
 import { DataChartComponent } from '../../../Comps/data-chart/data-chart.component';
 import { ViewChild } from '@angular/core';
+import { NewsApiService } from '../../../../services/Api/NewsApi/news-api.service';
+import { Article } from '../../../../models/Articles';
 
 
 @Component({
@@ -19,15 +21,17 @@ export class CoinPageComponent implements OnInit {
   StartTime: number = 0;
   EndTime: number = 0
   coin!: Coin;
+  News: Article[] = []
   YearInMilli = 31556952000
   TimeFrameSelected: string = '1M';
 
-  constructor(private route: ActivatedRoute, private Api: BinanceApiService, private Scroll: ScrollToTopService) {}
+  constructor(private route: ActivatedRoute, private Api: BinanceApiService, private NewsApi: NewsApiService ,private Scroll: ScrollToTopService) {}
 
   ngOnInit(): void {
     // this.Scroll.scrollToTopOnRouteChange()
     const symbol = this.route.snapshot.params['symbol'];
     this.GetCoin(symbol);
+    // this.GetNews();
   }
   GetCoin(coin: string) {
     if (coin) {
@@ -41,6 +45,13 @@ export class CoinPageComponent implements OnInit {
   SelectTimeFrame(TimeFrame: string) {
     this.TimeFrameSelected = TimeFrame;
     console.log('end time: ', this.EndTime, "\n\n start time: ", this.StartTime);
+  }
+
+  GetNews(){
+    this.NewsApi.getNews().subscribe((data) => {
+      this.News = data
+      console.log("news recieved", data)
+    })
   }
 
   
