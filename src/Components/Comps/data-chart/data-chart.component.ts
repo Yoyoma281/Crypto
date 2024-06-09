@@ -10,10 +10,9 @@ import {
 
 import { Chart, registerables } from 'chart.js';
 import zoomPlugin from 'chartjs-plugin-zoom';
-import { CandleStickData } from '../../../models/CandleStickData';
 import { BinanceApiService } from '../../../services/Api/BinanceApi/binance-api.service';
+import { CandleStickData } from '../../../../src/models/CandleStickData'
 import { DecimalPipe } from '@angular/common';
-
 
 @Component({
   selector: 'app-data-chart',
