@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   Input,
@@ -8,13 +7,12 @@ import {
   SimpleChanges,
   OnInit,
 } from '@angular/core';
+
 import { Chart, registerables } from 'chart.js';
-import { Coin } from '../../../models/Coin';
 import zoomPlugin from 'chartjs-plugin-zoom';
 import { BinanceApiService } from '../../../services/Api/BinanceApi/binance-api.service';
 import { DecimalPipe } from '@angular/common';
 import { CandleStickData } from '../../../models/CandleStickData';
-import { max, utcHour } from 'd3';
 
 
 @Component({
